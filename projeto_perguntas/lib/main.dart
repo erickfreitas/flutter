@@ -18,7 +18,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
           { 'texto': 'Preto', 'pontuacao': 10 },
           { 'texto': 'Vermelho', 'pontuacao': 7 },
           { 'texto': 'Verde', 'pontuacao': 5 },
-          { 'texto': 'Branco','pontuacao': 3 },
+          { 'texto': 'Branco','pontuacao': 2 },
         ]
       },
       {
@@ -27,7 +27,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
           { 'texto': 'Cachorro', 'pontuacao': 10 },
           { 'texto': 'Gato', 'pontuacao': 7 },
           { 'texto': 'Cavalo', 'pontuacao': 5 },
-          { 'texto': 'Coelho', 'pontuacao': 3 },
+          { 'texto': 'Coelho', 'pontuacao': 2 },
         ]
       },
       {
@@ -36,7 +36,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
           { 'texto': 'C#', 'pontuacao': 10 },
           { 'texto': 'Java', 'pontuacao': 7 },
           { 'texto': 'PHP', 'pontuacao': 5 },
-          { 'texto': 'Python', 'pontuacao': 3 },
+          { 'texto': 'Python', 'pontuacao': 2 },
         ]
       },
 
@@ -54,6 +54,13 @@ class _PerguntaAppState extends State<PerguntaApp> {
     print(_pontuacaoTotal);
   }
 
+  void _reiniciarQuestionario() {
+    setState(() {
+      _perguntaSelecionada = 0;
+      _pontuacaoTotal = 0;
+    });
+  }
+
   bool get temPerguntaSelecionada  {
     return _perguntaSelecionada < _perguntas.length;
   }
@@ -66,7 +73,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
         appBar: AppBar(
           title: Text('Perguntas'),
         ),
-        body: temPerguntaSelecionada ? Questionario(_perguntas, _perguntaSelecionada, _responder): Resultado()
+        body: temPerguntaSelecionada ? Questionario(_perguntas, _perguntaSelecionada, _responder): Resultado(_pontuacaoTotal, _reiniciarQuestionario)
       )
     );
   }
