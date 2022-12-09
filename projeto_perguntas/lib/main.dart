@@ -10,45 +10,48 @@ main() {
 
 class _PerguntaAppState extends State<PerguntaApp> {
   var _perguntaSelecionada = 0;
+  var _pontuacaoTotal = 0;
   final _perguntas = const [
       {
         "texto": 'Qual é a sua cor favorita?',
         "respostas": [
-          { 'texto': 'Preto', 'nota': 10 },
-          { 'texto': 'Vermelho', 'nota': 7 },
-          { 'texto': 'Verde', 'nota': 5 },
-          { 'texto': 'Branco','nota': 3 },
+          { 'texto': 'Preto', 'pontuacao': 10 },
+          { 'texto': 'Vermelho', 'pontuacao': 7 },
+          { 'texto': 'Verde', 'pontuacao': 5 },
+          { 'texto': 'Branco','pontuacao': 3 },
         ]
       },
       {
         "texto": 'Qual é o seu animal favorito?',
         "respostas": [
-          { 'texto': 'Cachorro', 'nota': 10 },
-          { 'texto': 'Gato', 'nota': 7 },
-          { 'texto': 'Cavalo', 'nota': 5 },
-          { 'texto': 'Coelho', 'nota': 3 },
+          { 'texto': 'Cachorro', 'pontuacao': 10 },
+          { 'texto': 'Gato', 'pontuacao': 7 },
+          { 'texto': 'Cavalo', 'pontuacao': 5 },
+          { 'texto': 'Coelho', 'pontuacao': 3 },
         ]
       },
       {
         "texto": 'Qual é a sua linguagem de programação favorita?',
         "respostas": [
-          { 'texto': 'C#', 'nota': 10 },
-          { 'texto': 'Java', 'nota': 7 },
-          { 'texto': 'PHP', 'nota': 5 },
-          { 'texto': 'Python', 'nota': 3 },
+          { 'texto': 'C#', 'pontuacao': 10 },
+          { 'texto': 'Java', 'pontuacao': 7 },
+          { 'texto': 'PHP', 'pontuacao': 5 },
+          { 'texto': 'Python', 'pontuacao': 3 },
         ]
       },
 
     ];
 
-  void _responder() {
+  void _responder(int pontuacao) {
     if(temPerguntaSelecionada) {
       setState(() {
         _perguntaSelecionada++;  
+        _pontuacaoTotal += pontuacao;
       });
     }
     
     print(_perguntaSelecionada);
+    print(_pontuacaoTotal);
   }
 
   bool get temPerguntaSelecionada  {
